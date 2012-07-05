@@ -1,0 +1,9 @@
+dc4f1bb1f87f47a2a452ff1d417dccef *DESCRIPTION
+69fd9582439c009fafe36476f4c10358 *NAMESPACE
+76d97f587d55dc16b5340b6494e318f6 *R/RL4_new.R
+15d01fc825eddb8bd2c6fe17d532bcd9 *R/rl4_S3.R
+31d8a96d1525a5a8a91630a9fd529435 *R/runs_test.R
+ee8ef683fe32159e34e8fca01a6733ee *man/RL4.Rd
+5c27b0efdbc7919efa597538b26fcca4 *man/print.rl4.Rd
+4f54331a81ff4236994f82292745b3db *man/randomize-package.Rd
+c209b19b6761632d2c08d94a3d660082 *man/runs.pvalue.Rd
