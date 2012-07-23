@@ -10,8 +10,8 @@ It is mainly intended for use in crossover studies but may be used also
 for parallel group designs if for sequences c("T","R") is used.
 }
 \usage{
-RL4(nsubj, seqs = c("TR", "RT"), blocksize, seed = Sys.time(), 
-    randctrl=TRUE, alpha=0.025)
+RL4(nsubj, seqs = c("TR", "RT"), blocksize, seed=runif(1,max=1E7), 
+    randctrl=TRUE, pmethod=c("normal", "exact", "cc"), alpha=0.025)
 }
 \arguments{
   \item{nsubj}{
@@ -33,11 +33,21 @@ with all subjects.
   }
   \item{seed}{
 An integer for the initialisation of the random number generator.
-}
+  }
   \item{randctrl}{
 Shall the creation of the randomlist controlled by a runs test of randomness?\cr
 Defaults to \code{TRUE}.\cr
   }
+  \item{pmethod}{
+A character string describing the method for the p-value calculation of the runs
+test.\cr\cr
+\code{"normal"} denotes the normal approximation like the function(s) \code{runs.test()}
+of the packages \code{tseries} or \code{lawstat}.\cr
+\code{"exact"} chooses the calculation via exact distribution of the # of runs.\cr
+\code{"cc"} chooses the continuity correction to the large sample approximation 
+like in the statistical software SPSS.\cr\cr
+Default is \code{pmethod="normal"}. 
+}
   \item{alpha}{
 Critical alpha value for re-creation of the randomlist based on the runs test.\cr
 Recommended is \code{alpha=0.025}.
@@ -85,7 +95,13 @@ according to a suggestion by Helmut Schuetz.
 The blocksize(s) should be a multiple of the used # of sequences. 
 If this is not the case it (they) will be adjusted accordingly.\cr\cr
 The number of subjects should be a multiple of the used # of sequences. 
-If this is not the case a warning is thrown that the design is not balanced.
+If this is not the case a warning is thrown that the design is not balanced.\cr\cr
+The default for \code{pmethod} is the calculation via standard normal approximation.
+This has shown the 'best' potential in rejecting the randomness for alternating
+random lists.\cr
+The randomness control does not work properly if more than 2 sequences are used.
+In that case a test of repeated patterns of sequences in blocks of length=nseq is
+done additionally to the runs test. Example (seqno) 1 2 3 1 2 3 ... 
 }
 \seealso{
 \code{\link{print.rl4}, \link{runs.pvalue}}
@@ -106,4 +122,10 @@ print(rl)
 RL4(nsubj=12, blocksize=0, seed=10)
 #if you don't worry about some 'extreme' lists
 RL4(nsubj=12, blocksize=0, seed=10, randctrl=FALSE)
+
+# randomness control does'nt work that good in case of more 
+# than 2 sequences: 3x3 latin square example
+rl <- RL4(nsubj=12, seq <- c("ABC","BCA","CAB"), blocksize=3, seed=5125)
+print(rl, sumry=TRUE)
+# gives runs p.value=0.2502
 }

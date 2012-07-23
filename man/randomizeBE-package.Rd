@@ -16,8 +16,8 @@ The randomisation may be controlled by a Wald-Wolfowitz runs test.
 \tabular{ll}{
 Package: \tab randomizeBE\cr
 Type: \tab Package\cr
-Version: \tab 0.1-2\cr
-Date: \tab 2012-07-05\cr
+Version: \tab 0.1-3\cr
+Date: \tab 2012-07-23\cr
 License: \tab GPL (>=2)\cr
   }
 }

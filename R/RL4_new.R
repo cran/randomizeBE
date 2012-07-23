@@ -7,16 +7,20 @@
 # function runs.pvalue implemented
 
 # function for (block) randomization
-RL4 <- function(nsubj, seqs=c("TR","RT"), blocksize, seed=Sys.time(),
-                randctrl=TRUE, alpha=0.025)
+RL4 <- function(nsubj, seqs=c("TR","RT"), blocksize, seed=runif(1,max=1E7), 
+                randctrl=TRUE, pmethod=c("normal","exact","cc"), alpha=0.025)
 {
+  pmethod <- match.arg(pmethod)
+  
   if (length(nsubj)>1) {
     subj <- nsubj
     nsubj <- length(subj)
   } else {
     subj <- 1:nsubj
   }
-  seed <- as.numeric(seed)
+  # if we use as.numeric here the re-use of the printed seed 
+  # will give different random lists! (if seed comes from Sys.time())
+  seed <- as.integer(seed)
   if(is.na(seed)) seed <- 0
   set.seed(seed)
 
@@ -29,7 +33,6 @@ RL4 <- function(nsubj, seqs=c("TR","RT"), blocksize, seed=Sys.time(),
     warning("Blocksize > # of subjects!", 
         " Blocksize adapted to ", nsubj,".", call. = FALSE )
   }
-  
   
   if (blocksize==0) {
     blocksize <- nsubj
@@ -54,16 +57,40 @@ RL4 <- function(nsubj, seqs=c("TR","RT"), blocksize, seed=Sys.time(),
   # runs test of randomnes is only possible if 2 sequences
   # if more than 2 sequences we use the dichotomization by the median
   # see wikipedia entry or package lawstat
-  runs.p <- runs.pvalue(rl)
+  # -----------------
+  # the simple normal approximation seems the 'best' test to reject randomness
+  runs.p <- runs.pvalue(rl, pmethod=pmethod)
+  maxrlen <- max(rle(rl)$lengths)
+  # randomness ctrl doesn't work good in case of # of seqs>2
+  # thus we test recurrent patterns
+  # blocks of nseq length here implemented as matrix columns
+  # gives a warning if not balanced, last column padded
+  # omit the unbalanced part?
+  xm <- matrix(rl[1:(nseq*(nsubj%/%nseq))], nrow=nseq)
+  allblocksequal <- ncol(unique(xm,MARGIN=2))
   # randomness control
   if (randctrl){
-    while(runs.p < alpha){
-      msg <- paste("runs.p=", 
-                   format(runs.p, digits=4),". Recreating randomlist.")
+    iter <- 0
+    while(runs.p < alpha | allblocksequal==1){
+      msg <- paste("runs.p= ", format(runs.p, digits=4),
+                   ". Recreating randomlist.", sep="")
+      if (allblocksequal==1) msg <- 
+            "All nseq blocks equal. Recreating randomlist."        
       message(msg)
-      rlv <- rlv(nsubj, nseq, blocksize)
-      rl  <- rlv$rl
-      runs.p <- runs.pvalue(rl)
+      # the seed must be adapted???
+      seed <- seed + as.integer(runif(1,max=100))
+      set.seed(seed)
+      iter <- iter + 1
+      rlv  <- rlv(nsubj, nseq, blocksize)
+      rl   <- rlv$rl
+      runs.p  <- runs.pvalue(rl, pmethod=pmethod)
+      maxrlen <- max(rle(rl)$lengths)
+      if (iter>=2) break
+    }
+  } else {
+    # create a warning
+    if (allblocksequal==1){
+      warning("Recurrent pattern of sequences detected.")
     }
   }
   bsv <- rlv$bsv
@@ -79,7 +106,7 @@ RL4 <- function(nsubj, seqs=c("TR","RT"), blocksize, seed=Sys.time(),
              msg, ":", msg2, call. = FALSE)
   }
   # the random list itself
-  rl <- data.frame(subject=subj, sequence=rlc, stringsAsFactors=FALSE)
+  rl <- data.frame(subject=subj, seqno=rl, sequence=rlc, stringsAsFactors=FALSE)
   # number of subjects in groups
   ns    <- t(as.matrix(ns))
   nsv   <- as.vector(ns)
@@ -92,7 +119,7 @@ RL4 <- function(nsubj, seqs=c("TR","RT"), blocksize, seed=Sys.time(),
   return(rlret)
 }
 
-# internal function for (block) randomisation
+# internal function for (block) randomisation - working horse
 # returns a list with the components
 #   rl = random list (sequences numeric 1:nseq)
 #   bsv = blocksize vector (actual)
