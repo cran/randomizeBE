@@ -1,7 +1,8 @@
 export(RL4,
        print.rl4,
        runs.pvalue,
-       pruns.exact)
+       pruns.exact,
+       sequences)
 
 # Define S3 methods
 S3method(print, rl4)

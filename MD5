@@ -1,11 +1,13 @@
-8b82c25804850f2220beabbdd7bcd3e4 *DESCRIPTION
-30b663259c9fed69ce3d11028b9b5f24 *NAMESPACE
-ef611ad18ac9e7620869d7b5b57ca1e5 *NEWS
+5df207df7cc665cc6acf35aa9553d778 *DESCRIPTION
+ddb194cd6ad189121e9e39756e798685 *NAMESPACE
+2d83d0bc5716606923a5ebc9c23e78b4 *NEWS
 dbc7cd0413bf1f211812f26a4c6e7589 *R/RL4_new.R
 15d01fc825eddb8bd2c6fe17d532bcd9 *R/rl4_S3.R
 3bbde8e1ef34b36887ec6538a2113767 *R/runs_test.R
+1d200f982fcda03dccd4cbfee1b98c09 *R/sequences.R
 276b202f899ae83568d387de415f1f7d *man/RL4.Rd
 5c27b0efdbc7919efa597538b26fcca4 *man/print.rl4.Rd
 a504b9d559541626953cd97c43a6e834 *man/pruns.exact.Rd
-c7a5cef263539b9a6666fa39f674a7b0 *man/randomizeBE-package.Rd
+c2ca95da664213e2a0e8c68b51586235 *man/randomizeBE-package.Rd
 19d7f38d89da7f98934afa5811320b42 *man/runs.pvalue.Rd
+db0bf995c99b64fa9bc9e04acb999233 *man/sequences.Rd
