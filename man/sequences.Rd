@@ -48,15 +48,22 @@ or in case of the \code{"4x4"} design from \cr
 \value{
 Returns a character vector with the sequences.
 }
+\references{
+Jones B, Kenward MG (2003). 
+"Design and Analysis of Cross-Over Trials" 2nd edition.
+Chapman & Hall, London.
+}
 \author{
 Detlew Labes
 }
 \note{
 For the higher order designs (designs with more than 2 treatments or replicate
-crossover designs, respectively) only a selection of possible designs are covered.
+crossover designs, respectively) only a selection of possible designs are covered.\cr
+The design sequences for \code{"4x4"} are not guaranteed to be a Williams design.
+If need a Williams design use function \code{williams()} instead. 
 }
 \seealso{
-\code{\link{RL4}}
+\code{\link{williams}}, \code{\link{RL4}}
 }
 \examples{
 # classical 2x2 crossover in TR notation (simple enough to remember
@@ -67,5 +74,4 @@ sequences("3x6x3")
 sequences("3x3", tmts=c("T","R1","R2"))
 # 4-treatment-4-period in TxRy notation, two Test and two Reference
 sequences("4x4", tmts=c("T1","T2","R1","R2"))
-
 }

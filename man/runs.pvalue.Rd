@@ -5,7 +5,7 @@
 }
 \description{
 The function calculates the 2-sided p-value of the Wald-Wolfowitz runs test
-after dichotomising the input vector
+after dichotomizing the input vector
 }
 \usage{
 runs.pvalue(y, pmethod = c("exact", "normal", "cc"))

@@ -4,7 +4,7 @@
 # Author: dlabes
 ###############################################################################
 # does not require(tseries) any longer
-# function runs.pvalue implemented
+# function runs.pvalue implemented by our self
 
 # function for (block) randomization
 RL4 <- function(nsubj, seqs=c("TR","RT"), blocksize, seed=runif(1,max=1E7), 

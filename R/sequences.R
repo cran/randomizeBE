@@ -7,9 +7,9 @@
 sequences <- function(design, tmts=NULL)
 { 
   seqs <- character()
-  ntmts <- as.numeric(substr(design,1,1))
-  if (!is.null(tmts) & length(tmts)!=ntmts){
-    stop ("Treatment codes must have ", ntmts, " entries!")
+  ntmt <- as.numeric(substr(design,1,1))
+  if (!is.null(tmts) & length(tmts)!=ntmt){
+    stop ("Treatment codes must have ", ntmt, " entries!")
   }
   
   # classical 2x2 crossover
@@ -19,7 +19,7 @@ sequences <- function(design, tmts=NULL)
   # 3x3 crossover
   if(design=="3x3" | design=="3x3x3"){
     seqs <- c("ABC","BCA","CAB")
-    # eventually we should randomize it?
+    # randomize it
     seqs <- randLS(seqs)
   }
   # 3x3 crossover: Williams design with 6 sequencess
@@ -33,14 +33,15 @@ sequences <- function(design, tmts=NULL)
   }
   # 4x4 crossover
   if(design=="4x4" | design=="4x4x4"){
-    # this is one of the four standard latin squares
-    # it is a williams design
+    # this is one of the four standard latin squares, it is a williams design
     seqs <- c("ABCD",
               "BDAC",
               "CADB",
               "DCBA")
-    # eventually we should randomize it?
+    # eventually we should randomize it? yes
     seqs <- randLS(seqs)
+    # although the standard Latin square is a williams design
+    # the randLS gives not always a Williams design back
   }
   # partial replicate (reference replicate)
   if(design=="2x3x3") seqs <- c("ABB","BAB","BBA")
@@ -49,7 +50,8 @@ sequences <- function(design, tmts=NULL)
   # 2-sequence-4-period full replicate: FDA design
   if(design=="2x2x4") seqs <- c("ABAB","BABA")
   # 4-sequence-4-period  full replicate
-  if(design=="2x4x4") seqs <- c("ABAB","BABA","ABBA","BAAB")
+  # Chen, Chow, Li: "SAMPLE SIZE higher order crossover"
+  if(design=="2x4x4") seqs <- c("ABBA","BAAB","AABB","BBAA")
   # Baalams design
   if(design=="2x4x2") seqs <- c("AB","BA","AA","BB")
   
@@ -65,7 +67,8 @@ sequences <- function(design, tmts=NULL)
   return(seqs)
 }
 
-# randomize latin square
+# ------------------------------------------------------------------------
+# internal function to randomize latin square
 randLS <- function(seqs)
 {
   seqm <- strsplit(seqs, split="")
@@ -81,7 +84,7 @@ randLS <- function(seqs)
   seqm2 <- seqm2[,cols]
   # sort by first col?
   seqm2 <- seqm2[order(seqm2[,1]),] 
-  for (i in seq_along(seqm2[1,])){
+  for (i in seq_along(seqm2[,1])){
     seqs[i] <- paste(seqm2[i,],sep="",collapse="")
   }
   seqs

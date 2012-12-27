@@ -1,10 +1,10 @@
 \name{RL4}
 \alias{RL4}
 \title{
-(Block) randomisation of subjects, patients into sequence groups
+(Block) randomization of subjects, patients into sequence groups
 }
 \description{
-This function creates a randomisation list of subjects, patients 
+This function creates a randomization list of subjects, patients 
 into sequences of treatments.\cr
 It is mainly intended for use in crossover studies but may be used also
 for parallel group designs if for sequences c("T","R") is used.
@@ -15,7 +15,7 @@ RL4(nsubj, seqs = c("TR", "RT"), blocksize, seed=runif(1,max=1E7),
 }
 \arguments{
   \item{nsubj}{
-Number of subjects, patients ... to be randomised.\cr
+Number of subjects, patients ... to be randomized.\cr
 Or a vector of the subject numbers (f.i. 1001:1012)
   }
   \item{seqs}{
@@ -54,14 +54,14 @@ Recommended is \code{alpha=0.025}.
   }
 }
 \details{
-As default the randomisation is done as block randomisation.\cr
+As default the randomization is done as block randomization.\cr
 If \code{blocksize} is given as a vector of numbers the sizes of the blocks 
 are randomly chosen from that vector.\cr
 If \code{blocksize=0} then the randomization takes place in the one block 
 with all subjects.\cr\cr
-The randomisation is in the default settings controlled by a Wald-Wolfowitz
+The randomization is in the default settings controlled by a Wald-Wolfowitz
 runs test of randomness, i.e. if this test shows significant deviation from randomness
-(p-value<0.025 as default) the randomisation list is recreated.\cr 
+(p-value<0.025 as default) the randomization list is recreated.\cr 
 This behavior may be switched off by setting \code{randctrl=FALSE} if you don't
 see any needfulness for such a control.\cr
 The reason for such a control was originally to avoid randomlists with only
@@ -107,16 +107,16 @@ done additionally to the runs test. Example (seqno) 1 2 3 1 2 3 ...
 \code{\link{print.rl4}, \link{runs.pvalue}}
 }
 \examples{
-# block randomisation of 12 subjects for a 2x2 cross-over using the defaults
+# block randomization of 12 subjects for a 2x2 cross-over using the defaults
 # seqs = c("TR", "RT"), blocksize=4 and seed from Sys.time()
 RL4(nsubj=12)
 
-# block randomisation of a full replicate design with randomly
+# block randomization of a full replicate design with randomly
 # chosen blocksizes 2 or 4
 rl <- RL4(nsubj=12, blocksize=c(2, 4), seqs=c("TRRT","RTTR"))
 print(rl)
 
-# randomisation of 12 subjects for a 2x2 cross-over
+# randomization of 12 subjects for a 2x2 cross-over
 # where the original random list don't pass the runs test
 # watch the message.
 RL4(nsubj=12, blocksize=0, seed=10)

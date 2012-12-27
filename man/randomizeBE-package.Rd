@@ -6,18 +6,22 @@
 Create a randomisation list for cross-over studies.
   }
 \description{
-Randomises subjects, patients in groups of (treatment) sequences.\cr
-If a blocksize is given, the randomisation will be done within blocks.\cr
+Main function \code{RL4()} randomizes subjects, patients in groups of 
+(treatment) sequences.\cr
+If a blocksize is given, the randomization will be done within blocks.\cr
 If more then one blocksizes are given, the size of blocks will be chosen randomly
 from the blocksizes.\cr
-The randomisation may be controlled by a Wald-Wolfowitz runs test.
+The randomization may be controlled by a Wald-Wolfowitz runs test.
+Functions to obtain the p-value of that test are included.\cr\cr
+Contains further two helper functions \code{sequences()} and \code{williams()} 
+to get the sequences of commonly used designs in BE studies.
   }
 \details{
 \tabular{ll}{
 Package: \tab randomizeBE\cr
 Type: \tab Package\cr
-Version: \tab 0.2-1\cr
-Date: \tab 2012-09-20\cr
+Version: \tab 0.3-1\cr
+Date: \tab 2012-09-21\cr
 License: \tab GPL (>=2)\cr
   }
 }
