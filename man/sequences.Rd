@@ -6,7 +6,7 @@ Obtain sequences for BE study designs
 \description{
 The function is intended as helper function to get the sequences for commonly 
 used designs in BE studies.\cr 
-These sequences may then subsequently used in \code{RL4()}.
+These sequences may then subsequently used in function \code{RL4()}.
 }
 \usage{
 sequences(design, tmts = NULL)

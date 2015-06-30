@@ -31,10 +31,10 @@ found in the R-packages lawstat and tseries.\cr
 The aim of this own was to avoid the heavy footprint of both packages for this small
 package.\cr\cr
 The user can choose the application of a continuity correction to the normal
-approximation like a SAS implementation \url{http://support.sas.com/kb/33/092.html} uses the 
+approximation like a SAS implementation \url{http://support.sas.com/kb/33/092.html} uses  
 or like SPSS if n<50.\cr\cr
 The exact distribution of runs and the p-value based on it are described in the manual
-of SPSS "Exact tests" to be found f.i. \url{www.hanken.fi/student/media/3618/spssexacttests.pdf}.\cr
+of SPSS "Exact tests" to be found f.i. \url{http://www.sussex.ac.uk/its/pdfs/SPSS_Exact_Tests_21.pdf}.\cr
 If \code{pmethod="exact"} is chosen and n>30 and n1>12 and n2>12 (see \code{\link{pruns.exact}})
 the continuity corrected version of the normal approximation is used to save time and memory.
 }
@@ -49,8 +49,6 @@ and from \code{runs.test()} package tseries\cr
 Author: A. Trapletti
 }
 \seealso{
-\code{\link[tseries]{runs.test} tseries}, 
-\code{\link[lawstat]{runs.test} lawstat}
 \code{\link{pruns.exact}}
 }
 \examples{

@@ -38,9 +38,6 @@ The upper (right) tail p-value is defined as P(R>=r).\cr
 r is the observed value of the random variable R.
 
 }
-\seealso{
-\code{\link{help}}
-}
 \examples{
 # SPSS "Exact Tests": small sample example, exact p:  0.071
 # x <- c(1, 1, 1, 1, 0, 0, 0, 0, 1, 1)  

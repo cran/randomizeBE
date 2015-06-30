@@ -5,5 +5,8 @@ export( RL4,
         sequences,
         williams )
 
+# import functions from stats
+importFrom(stats, runif, na.omit, median, pnorm)
+
 # Define S3 methods
 S3method(print, rl4)
