@@ -34,7 +34,7 @@ RL4 <- function(nsubj, seqs=c("TR","RT"), blocksize, seed=runif(1,max=1E7),
         " Blocksize adapted to ", nsubj,".", call. = FALSE )
   }
   
-  if (blocksize==0) {
+  if (any(blocksize==0)) {
     blocksize <- nsubj
   } else {
     # silent adaption or warning?

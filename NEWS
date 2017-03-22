@@ -1,3 +1,7 @@
+Version 0.3-3
+released 2017-03-22
+      - Maintenance release according to a request of CRAN to avoid warnings /
+        errors in control statements with condition with length > 1
 version 0.3-2
 released 2015-06-30
       - Maintenance release with NAMESPACE adapted to get the necessary
