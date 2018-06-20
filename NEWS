@@ -1,4 +1,9 @@
 Version 0.3-3
+released 2018-06-20
+      - Maintenance release according to a request of CRAN to avoid out of sync
+        entries in randomizeBE-package man page. Removed this man page because 
+        it's only a duplication of the DESCRIPTION file
+Version 0.3-3
 released 2017-03-22
       - Maintenance release according to a request of CRAN to avoid warnings /
         errors in control statements with condition with length > 1
