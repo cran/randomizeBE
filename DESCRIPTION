@@ -1,8 +1,8 @@
 Package: randomizeBE
 Type: Package
 Title: Create a Random List for Crossover Studies
-Version: 0.3-4
-Date: 2018-06-20
+Version: 0.3-5
+Date: 2019-08-24
 Author: D. Labes
 Maintainer: D. Labes <detlewlabes@gmx.de>
 Description: Contains a function to randomize subjects, patients in groups of 
@@ -17,6 +17,6 @@ Description: Contains a function to randomize subjects, patients in groups of
 Imports: stats
 License: GPL (>= 2.0)
 NeedsCompilation: no
-Packaged: 2018-06-20 07:04:02 UTC; dlabes
+Packaged: 2019-08-24 14:22:21 UTC; Detlew
 Repository: CRAN
-Date/Publication: 2018-06-20 07:13:55 UTC
+Date/Publication: 2019-08-24 16:20:08 UTC

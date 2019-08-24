@@ -7,7 +7,8 @@
 sequences <- function(design, tmts=NULL)
 { 
   seqs <- character()
-  ntmt <- as.numeric(substr(design,1,1))
+  ntmt <- 2
+  if(design!="parallel") ntmt <- as.numeric(substr(design,1,1))
   if (!is.null(tmts) & length(tmts)!=ntmt){
     stop ("Treatment codes must have ", ntmt, " entries!")
   }
