@@ -34,7 +34,7 @@ The user can choose the application of a continuity correction to the normal
 approximation like a SAS implementation \url{http://support.sas.com/kb/33/092.html} uses  
 or like SPSS if n<50.\cr\cr
 The exact distribution of runs and the p-value based on it are described in the manual
-of SPSS "Exact tests" to be found f.i. \url{http://www.sussex.ac.uk/its/pdfs/SPSS_Exact_Tests_21.pdf}.\cr
+of SPSS "Exact tests" to be found f.i. \url{https://www.sussex.ac.uk/its/pdfs/SPSS_Exact_Tests_21.pdf}.\cr
 If \code{pmethod="exact"} is chosen and n>30 and n1>12 and n2>12 (see \code{\link{pruns.exact}})
 the continuity corrected version of the normal approximation is used to save time and memory.
 }

@@ -1,8 +1,9 @@
+Encoding: UTF-8
 Package: randomizeBE
 Type: Package
 Title: Create a Random List for Crossover Studies
-Version: 0.3-5
-Date: 2019-08-24
+Version: 0.3-6
+Date: 2023-08-19
 Author: D. Labes
 Maintainer: D. Labes <detlewlabes@gmx.de>
 Description: Contains a function to randomize subjects, patients in groups of 
@@ -15,8 +16,9 @@ Description: Contains a function to randomize subjects, patients in groups of
    Contains two helper functions sequences() and williams() to get the sequences 
    of commonly used designs in BE studies.
 Imports: stats
+Suggests: knitr, rmarkdown
 License: GPL (>= 2.0)
 NeedsCompilation: no
-Packaged: 2019-08-24 14:22:21 UTC; Detlew
+Packaged: 2023-08-19 15:24:50 UTC; Detlew
 Repository: CRAN
-Date/Publication: 2019-08-24 16:20:08 UTC
+Date/Publication: 2023-08-19 16:10:07 UTC

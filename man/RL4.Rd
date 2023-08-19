@@ -71,7 +71,7 @@ In its original form the runs test is only defined for dichotomous outcomes
 (i.e if 2 sequences are used).\cr
 If more than 2 sequences are used the runs test is modified by dichotomizing
 the sample of sequence numbers into cases < median and > median.\cr
-See package \code{lawstat} or \url{http://de.wikipedia.org/wiki/Run-Test} for this.
+See package \code{lawstat} or \url{https://de.wikipedia.org/wiki/Run-Test} for this.
 }
 \value{
 Returns a list of class "rl4".
